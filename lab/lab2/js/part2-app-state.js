@@ -33,10 +33,27 @@
 ===================== */
 
 // We set this to HTTP to prevent 'CORS' issues
-var downloadData = $.ajax("http://");
-var parseData = function() {};
-var makeMarkers = function() {};
-var plotMarkers = function() {};
+var downloadData = $.ajax("https://raw.githubusercontent.com/CPLN692-MUSA611/datasets/master/json/philadelphia-bike-crashes-snippet.json");
+var parseData = function(downloadData) {
+  var PData=JSON.parse(downloadData);
+  var PData2 = _.filter(PData, function(num){
+  return num.COLLISION_>1
+});
+//  console.log(PData2);
+  return PData2;
+};
+var makeMarkers = function(parsed) {
+  var markers= [];
+  _.each(parsed, function(obj){
+    markers.push(L.marker([obj.LAT,obj.LNG]));
+  })
+  return markers;
+};
+var plotMarkers = function(marker) {
+  _.each(marker, function(num){
+    num.addTo(map);
+  });
+};
 
 
 /* =====================
@@ -52,7 +69,11 @@ var plotMarkers = function() {};
   user's input.
 ===================== */
 
-var removeMarkers = function() {};
+var removeMarkers = function(marker) {
+   _.each(marker,function(obj){
+  map.removeLayer(obj);
+});
+};
 
 /* =====================
   Optional, stretch goal
@@ -85,6 +106,8 @@ var Stamen_TonerLite = L.tileLayer('http://stamen-tiles-{s}.a.ssl.fastly.net/ton
 downloadData.done(function(data) {
   var parsed = parseData(data);
   var markers = makeMarkers(parsed);
+  console.log(parsed);
   plotMarkers(markers);
-  removeMarkers(markers);
+  console.log(markers);
+   removeMarkers(markers);
 });

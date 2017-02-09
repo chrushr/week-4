@@ -25,3 +25,57 @@ body {
     overflow-y: auto;
     padding: 20px;
 }
+
+.t1{
+  font-size: 18px;
+}
+
+
+span{
+  color:#acacac
+}
+
+#t6{
+  float:right;
+}
+
+#f3{
+  width: 300px;
+  height: 130px;
+  border:1px solid white;
+  background: #f3f3f3;
+  padding-left: 20px
+}
+
+#f4{
+  width: 300px;
+  height: 160px;
+  border:1px solid white;
+  background: #f3f3f3;
+  padding-left: 20px
+}
+
+#f5{
+  width: 300px;
+  height: 130px;
+  border:1px solid white;
+  background: #f3f3f3;
+  padding-left: 20px
+}
+
+.t3{
+  color:white
+}
+
+#f1{
+  border:1px solid #d3d3d3;
+  height:20px;
+  width: 300px
+}
+
+#f2{
+  border:1px solid #d3d3d3;
+  height:20px;
+  width: 100px;
+  border-radius: 5px;
+}
